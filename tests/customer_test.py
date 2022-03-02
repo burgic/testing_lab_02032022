@@ -5,13 +5,22 @@ from src.pub import Pub
 
 class TestCustomer(unittest.TestCase):
     def setUp(self):
-        self.customer = Customer("derek", 10)
+        self.customer = Customer("derek", 10, 18)
 
     def test_customer_has_name(self):
         self.assertEqual("derek", self.customer.name)
     
     def test_customer_has_wallet(self):
         self.assertEqual(10, self.customer.wallet)
+
+    def test_can_customer_buy_drink_true(self):
+        status = self.customer.check_age()
+        self.assertEqual(True, status)
+        
+    def test_can_customer_buy_drink_false(self):
+        self.customer.age = 17
+        status = self.customer.check_age()
+        self.assertEqual(False, status)
 
     def test_customer_buy_drink(self):
         drink_lager = Drink("Tennants", 1.50)
