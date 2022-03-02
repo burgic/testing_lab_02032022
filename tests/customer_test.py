@@ -28,9 +28,18 @@ class TestCustomer(unittest.TestCase):
         self.customer.buy_drink(pub_name, drink_lager)
         self.assertEqual(8.50, self.customer.wallet)
         self.assertEqual(101.5, pub_name.till)
+        self.assertEqual(2.4, self.customer.drunkeness_level)
 
     def test_underage_customer_buy_drink(self):
         self.customer.age = 17
+        drink_lager = Drink("Tennants", 1.50, 2.4)
+        pub_name = Pub("The Prancing Pony", 100)
+        self.customer.buy_drink(pub_name, drink_lager)
+        self.assertEqual(10, self.customer.wallet)
+        self.assertEqual(100, pub_name.till)
+
+    def test_customer_drunkenness(self):
+        self.customer.drunkeness_level = 24
         drink_lager = Drink("Tennants", 1.50, 2.4)
         pub_name = Pub("The Prancing Pony", 100)
         self.customer.buy_drink(pub_name, drink_lager)
