@@ -8,5 +8,9 @@ class Customer:
         return self.age >= 18
 
     def buy_drink(self, pub_name, drink_name):
-        self.wallet -= drink_name.price
-        pub_name.till += drink_name.price
+        if self.check_age():
+            self.wallet -= drink_name.price
+            pub_name.till += drink_name.price
+        else:
+            return "nae bairns"
+        
