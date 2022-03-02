@@ -22,3 +22,8 @@ class Customer:
         else:
             return "nae bairns"
         
+    def buy_food(self, pub_name, food_name):
+        self.wallet -= food_name.price
+        pub_name.till += food_name.price
+        self.drunkeness_level -= food_name.rejuvenation_level
+        

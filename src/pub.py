@@ -12,3 +12,9 @@ class Pub:
     
     def return_range_drinks(self):
         return len(self.drinks)
+    
+    def stock_value(self):
+        count = 0
+        for drink in self.drinks:
+            count += (drink.quantity  * drink.price)
+        return count

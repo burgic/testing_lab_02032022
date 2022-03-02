@@ -20,7 +20,13 @@ class TestPub (unittest.TestCase):
         self.assertEqual(100.00, self.pub.till)
     
     def test_pub_has_drinks(self):
-        tennants = Drink("Tennants", 1.50, 2.4)
+        tennants = Drink("Tennants", 1.50, 2.4, 5)
         self.pub.add_drink(tennants)
         range = self.pub.return_range_drinks()
         self.assertEqual(1, range)
+    
+    def test_stock_value(self):
+        tennants = Drink("Tennants", 1.50, 2.4, 5)
+        self.pub.add_drink(tennants)
+        pub_stock = self.pub.stock_value()
+        self.assertEqual(7.5, pub_stock)
