@@ -1,4 +1,5 @@
 import unittest
+from src.drink import Drink
 from src.pub import Pub
 
 class TestPub (unittest.TestCase):
@@ -15,4 +16,11 @@ class TestPub (unittest.TestCase):
         self.assertEqual(expected, actual)
         # self.assertEqual(102.5, self.pub.till)
 
+    def test_pub_has_till(self):
+        self.assertEqual(100.00, self.pub.till)
     
+    def test_pub_has_drinks(self):
+        tennants = Drink("Tennants", 1.50)
+        self.pub.add_drink(tennants)
+        range = self.pub.return_range_drinks()
+        self.assertEqual(1, range)
